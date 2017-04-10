@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.HashSet;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,6 +26,7 @@ public class Main {
         //displayBoard(board);
         if(recursiveFunction(board,pieces)){
             System.out.println("------------Solution-------------");
+            correctOutputFormat(board);
             displayBoard(board);
         }else{
             System.out.println("?");
@@ -292,6 +295,13 @@ public class Main {
 
     }
 
+    /*
+    public static boolean add5(Tetromino curPiece, char[][] board, AllPieces pieces, int[] coord){
+
+
+    }*/
+
+    //-----------------------------------------------------------------------------------------------------------------
     //left to right
     // there is checks that check whether this orientation is possible and returns false if it is not possible
     public static boolean insertNHorizontally(char[][] board, int n, char c, int []startPoint){
@@ -389,5 +399,29 @@ public class Main {
              System.out.println();
          }
 
+    }
+//---------------------------------------------------------------------------------------------------------------------
+    public static void correctOutputFormat(char[][] board){
+        HashSet<Character> letters = new HashSet<Character>();
+        char toFill = 'a';
+        for(int i = 0; i < board.length; ++i){
+            for(int j = 0; j < board[0].length; ++j){
+                if(!letters.contains(board[i][j])){
+                    replaceAll(board,board[i][j],toFill);
+                    toFill+=1;
+                    letters.add(board[i][j]);
+                }
+            }
+        }
+    }
+
+    public static void replaceAll(char[][] board, char now, char replaceWith){
+        for(int i = 0; i < board.length; ++i){
+            for(int j = 0; j < board[0].length; ++j){
+                if(board[i][j] == now){
+                    board[i][j] = replaceWith;
+                }
+            }
+        }
     }
 }

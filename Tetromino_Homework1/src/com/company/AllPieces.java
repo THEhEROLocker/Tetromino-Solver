@@ -20,7 +20,7 @@ public class AllPieces {
         this.pieces = new Tetromino[this.num_pieces];
         this.piecesInp = piecesInp;
 
-        char toFill = 'a';
+        char toFill = 'A';
 
         for(int i = 0; i < num_pieces;++i){
             pieces[i] = new Tetromino(piecesInp.charAt(i),toFill);
