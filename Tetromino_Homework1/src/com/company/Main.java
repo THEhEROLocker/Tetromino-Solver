@@ -1,18 +1,16 @@
 package com.company;
 
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-       // System.out.println(args[0]);
-        //System.out.println(args[1]);
-        //System.out.println(args[2]);
+        Scanner scanner = new Scanner(System.in);
 
-
-        int rows = Integer.parseInt(args[0]);
-        int columns = Integer.parseInt(args[1]);
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+        String piecesRawInp = scanner.next();
 
         char [][] board = new char[rows][columns];
         for(int i = 0; i < board.length ;++i){
@@ -21,9 +19,8 @@ public class Main {
             }
         }
 
-        AllPieces pieces = new AllPieces(args[2]);
+        AllPieces pieces = new AllPieces(piecesRawInp);
 
-        //displayBoard(board);
         if(recursiveFunction(board,pieces)){
             System.out.println("------------Solution-------------");
             correctOutputFormat(board);
@@ -31,8 +28,6 @@ public class Main {
         }else{
             System.out.println("?");
         }
-
-
     }
 
     public static boolean recursiveFunction(char[][]board, AllPieces pieces){
